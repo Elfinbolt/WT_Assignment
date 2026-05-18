@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery AJAX Example</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        #content { 
+            margin-top: 20px; 
+            padding: 15px; 
+            border: 1px solid #ccc; 
+            background-color: #f9f9f9;
+            min-height: 50px;
+        }
+        .loading { color: blue; font-style: italic; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+
+    <h2>User Data Fetcher (AJAX)</h2>
+    <p>Click the button below to fetch a user's details from a remote server without reloading the page.</p>
+    
+    <button id="fetchBtn">Get User Info</button>
+
+    <div id="content">
+        No data loaded yet.
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $("#fetchBtn").click(function() {
+                $("#content").html('<span class="loading">Fetching data...</span>');
+
+                $.ajax({
+                    url: "https://jsonplaceholder.typicode.com/users/2",
+                    type: "GET",
+                    success: function(result) {
+                        let html = "<strong>Name:</strong> " + result.name + "<br>";
+                        html += "<strong>Email:</strong> " + result.email + "<br>";
+                        html += "<strong>Website:</strong> " + result.website;
+                        
+                        $("#content").html(html);
+                    },
+                    error: function(xhr, status, error) {
+                        $("#content").html('<span class="error">An error occurred: ' + error + '</span>');
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

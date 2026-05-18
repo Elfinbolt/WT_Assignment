@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<body>
+<button onclick="makePage();">Click Here</button>
+
+<script>
+    function makePage() {
+        let h1Header = document.createElement("h1");
+        let h1Text = document.createTextNode("I am an H1");
+        h1Header.appendChild(h1Text);
+        document.body.appendChild(h1Header);
+
+        let para = document.createElement("p");
+        let pText = document.createTextNode("This is a paragraph followed by a list");
+        para.appendChild(pText);
+        document.body.appendChild(para);
+
+      
+        let orderedList = document.createElement("ol");
+        orderedList.setAttribute("type", "I");
+
+        let listItem1 = document.createElement("li");
+        let liText1 = document.createTextNode("This is first");
+        listItem1.appendChild(liText1);
+        orderedList.appendChild(listItem1);
+
+        let listItem2 = document.createElement("li");
+        let liText2 = document.createTextNode("This is second");
+        listItem2.appendChild(liText2);
+        orderedList.appendChild(listItem2);
+
+        document.body.appendChild(orderedList);
+    }
+</script>
+
+</body>
+</html>

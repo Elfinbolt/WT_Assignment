@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding: 20px; }
+        .form-container { margin-bottom: 20px; }
+        table { width: 80%; margin: 0 auto; border-collapse: collapse; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: center; }
+        th { background-color: #f8f8f8; }
+        .delete-btn { 
+            background-color: #d9534f; 
+            color: white; 
+            border: none; 
+            padding: 5px 15px; 
+            border-radius: 4px; 
+            cursor: pointer; 
+        }
+        .delete-btn:hover { background-color: #c9302c; }
+        input, select { padding: 5px; margin: 0 5px; }
+    </style>
+</head>
+<body>
+
+    <h1>My Favorite Movies</h1>
+
+    <div class="form-container">
+        <label>Title</label>
+        <input type="text" id="movieTitle" placeholder="Movie Title">
+        
+        <label>Rating</label>
+        <input type="number" id="movieRating" min="0" max="10" placeholder="0 to 10">
+        
+        <button onclick="addMovie()">Add Movie</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Rating</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody id="movieTableBody">
+            </tbody>
+    </table>
+
+    <script>
+        function addMovie() {
+            const titleInput = document.getElementById("movieTitle");
+            const ratingInput = document.getElementById("movieRating");
+            const tableBody = document.getElementById("movieTableBody");
+
+            if (titleInput.value === "" || ratingInput.value === "") {
+                alert("Please fill in both fields");
+                return;
+            }
+
+            const newRow = document.createElement("tr");
+            const titleCell = document.createElement("td");
+            const ratingCell = document.createElement("td");
+            const deleteCell = document.createElement("td");
+            const deleteBtn = document.createElement("button");
+
+            titleCell.innerText = titleInput.value;
+            ratingCell.innerText = ratingInput.value;
+            deleteBtn.innerText = "Delete";
+            deleteBtn.className = "delete-btn";
+
+            deleteBtn.onclick = function() {
+                newRow.remove();
+            };
+
+            deleteCell.appendChild(deleteBtn);
+            newRow.appendChild(titleCell);
+            newRow.appendChild(ratingCell);
+            newRow.appendChild(deleteCell);
+            tableBody.appendChild(newRow);
+
+            titleInput.value = "";
+            ratingInput.value = "";
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        #box {
+            background: #98bf21;
+            height: 100px;
+            width: 100px;
+            margin: 6px;
+            transition: all 1s ease; 
+        }
+
+        /* Define the 'active' state */
+        .animated-box {
+            height: 250px !important;
+            width: 250px !important;
+            background-color: #3498db !important;
+        }
+    </style>
+</head>
+<body> 
+
+    <button id="btn1">Animate height, width & color</button> 
+    <button id="btn2">Reset</button> 
+
+    <div id="box"></div>
+
+    <script>
+        $(document).ready(function(){
+            $("#btn1").click(function(){
+                $("#box").addClass("animated-box");
+            });
+
+            $("#btn2").click(function(){
+                $("#box").removeClass("animated-box");
+            });
+        });
+    </script>
+
+</body>
+</html>

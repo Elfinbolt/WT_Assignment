@@ -1,0 +1,33 @@
+<html>
+<body>
+<button style="margin-bottom: 10px;" onclick="addrow()">Add</button>
+<table border="1"id="mytable">
+   <th>Numbers</th>
+  <tr id="0"><td>0</td></tr>
+  <tr id="1"><td>1</td></tr>
+</table>
+
+<script>
+function addrow() {
+  const table = document.getElementById("mytable");
+  
+  const rows = table.getElementsByTagName("tr");
+  const count = rows.length;
+  
+  const lastValue = parseInt(rows[count - 1].cells[0].innerText);
+  const secondLastValue = parseInt(rows[count - 2].cells[0].innerText);
+  
+  const newValue = lastValue + secondLastValue;
+  
+  const newRow = document.createElement("tr");
+  const newCell = document.createElement("td");
+                                                                                                     
+  newRow.id = count;
+  newCell.innerText = newValue;
+  
+  newRow.appendChild(newCell);
+  table.appendChild(newRow);
+}
+</script>
+</body>
+</html>
